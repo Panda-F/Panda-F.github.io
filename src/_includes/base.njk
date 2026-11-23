@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{ lang | default('zh-CN') }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ description | default(site.description) | escape }}">
+  <title>{% if title %}{{ title | escape }} · {% endif %}{{ site.title }}</title>
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="alternate" type="application/atom+xml" title="{{ site.title }}" href="/feed.xml">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">跳至正文</a>
+  <div class="site-shell">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="{{ site.title }} 首页">
+        <span class="mark" aria-hidden="true"></span><span>ark</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="/#articles">文章</a>
+        <a href="/about/"{% if page.url == '/about/' %} aria-current="page"{% endif %}>关于</a>
+      </nav>
+    </header>
+    <main id="main">{{ content | safe }}</main>
+    <footer class="site-footer">
+      <span>{{ site.author }}</span>
+      <nav aria-label="相关链接">
+        <a href="https://github.com/Panda-F">GitHub</a>
+        <a href="https://x.com/ark_panda">X</a>
+        <a href="/feed.xml">RSS</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
