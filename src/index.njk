@@ -2,33 +2,38 @@
 layout: base.njk
 ---
 <section class="intro" aria-labelledby="site-title">
-  <h1 id="site-title">{{ site.title }}</h1>
-  <p>我关注模型如何生成和操作界面，以及如何评测和训练这些能力。</p>
+  <div class="intro-copy">
+    <h1 id="site-title">{{ site.title }}</h1>
+    <p>I write about how AI systems build and use interfaces, and how we can evaluate and train those capabilities.</p>
+  </div>
+  <img class="intro-image" src="/assets/interface-study.webp" alt="" width="960" height="720" fetchpriority="high">
 </section>
 <div class="index-grid">
   <section class="article-index" id="articles" aria-labelledby="articles-title">
-    <h2 id="articles-title">文章</h2>
+    <h2 id="articles-title">Writing</h2>
     {% if collections.posts.length %}
       <ol class="article-list">
         {% for post in collections.posts | reverse %}
           <li>
-            <time datetime="{{ post.date | isoDate }}">{{ post.date | shortDate }}</time>
-            <h3><a href="{{ post.url }}">{{ post.data.title | escape }}</a></h3>
-            {% if post.data.description %}<p>{{ post.data.description | escape }}</p>{% endif %}
+            <time datetime="{{ post.date | isoDate }}">{{ post.date | displayDate }}</time>
+            <div>
+              <h3><a href="{{ post.url }}">{{ post.data.title | escape }}</a></h3>
+              {% if post.data.description %}<p>{{ post.data.description | escape }}</p>{% endif %}
+            </div>
           </li>
         {% endfor %}
       </ol>
     {% else %}
-      <p class="empty">暂无文章。可以通过 <a href="/feed.xml">RSS</a> 订阅后续更新。</p>
+      <p class="empty">No articles yet. <a href="/feed.xml">Subscribe via RSS</a> for new posts.</p>
     {% endif %}
   </section>
   <aside class="topics" aria-labelledby="topics-title">
-    <h2 id="topics-title">研究方向</h2>
+    <h2 id="topics-title">Research interests</h2>
     <ul>
-      <li>GUI Agent</li>
-      <li>UI 生成与美学评估</li>
-      <li>大模型评测与后训练</li>
-      <li>Agentic RL</li>
+      <li>GUI agents</li>
+      <li>Interface generation and aesthetics</li>
+      <li>LLM evaluation and post-training</li>
+      <li>Agentic reinforcement learning</li>
     </ul>
   </aside>
 </div>
